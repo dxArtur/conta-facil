@@ -1,5 +1,11 @@
 const {app, BrowserWindow} = require('electron')
+const dotenv = require('dotenv')
+const path = require('path')
 
+const envPath = path.join(__dirname, '.env')
+dotenv.config({ path: envPath })
+
+console.log(process.env.DATABASE_URL)
 function createWindow() {
     const mainWindow = new BrowserWindow({
         width:800,

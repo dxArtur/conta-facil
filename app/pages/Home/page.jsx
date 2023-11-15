@@ -1,7 +1,8 @@
 'use client'
 
 import React , { useState } from "react"
-import { Text, Button } from '@radix-ui/themes'
+import Link from "next/link"
+import { Text, Button, Separator } from '@radix-ui/themes'
 import { RiDeleteBin5Line, RiAddCircleLine } from 'react-icons/ri'
 import { BiMoneyWithdraw } from 'react-icons/bi'
 
@@ -26,17 +27,22 @@ const Home = () =>{
             <div className="mr-4 ml-4 grid grid-cols-3 gap-4 " >
                 {tables.map(table=>
                     <div className="   flex flex-col items-center  border-gray-300 border-2 shadow-xl p-2 " size={'4'}> 
-                        <Text className="text-zinc-700" >Mesa {table} </Text>
-                        <div className="w-full space-x-2  mb-2 flex flex-row items-center mt-2">
-                            <Button color="jade" className="shadow-xl w-32">
-                                Adicionar produto<RiAddCircleLine />
-                            </Button>
-                            <Button color="amber" className="shadow-xl w-28">
-                                Imprimir conta <BiMoneyWithdraw className="" />
-                            </Button>
-                            <Button color="red" className="shadow-xl w-28">
-                                Apagar mesa<RiDeleteBin5Line />
-                            </Button>
+                        <Link href={'/pages/Desk'}>
+                            <Text className="text-zinc-700" >
+                                    Mesa {table}
+                            </Text>
+                        </Link>
+                        <Separator size={'4'}/>
+                        <div className=" space-x-2  mb-2 flex flex-row items-center mt-2">
+                            <Link href={'/pages/Items'}>
+                                <Button color="jade" className="shadow-xl ">
+                                        Adicionar produto<RiAddCircleLine />
+                                </Button>
+                            </Link>
+                                <Button color="amber" className="shadow-xl ">
+                                    Imprimir conta <BiMoneyWithdraw className="" />
+                                </Button>
+                            
                         </div>
                     </div>
                     )}
