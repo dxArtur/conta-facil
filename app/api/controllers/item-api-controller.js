@@ -1,4 +1,4 @@
-import { prisma } from '../../../db/prismaClient'
+import { prisma } from '../../../db/prismaClient.js'
 
 
     export const getAllItems = async(req, res) => {
@@ -23,3 +23,19 @@ import { prisma } from '../../../db/prismaClient'
             console.log(error)
         }
     }
+
+    export const getItemsByCategory = async(req, res) => {
+        const {categoryId} = req.params
+        try {
+            const data = await prisma.item.findMany({
+                where:{
+                    categoryId: categoryId
+                },
+            })
+
+            res.status(200).json(data)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    
